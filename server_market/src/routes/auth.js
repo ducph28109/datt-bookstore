@@ -9,4 +9,5 @@ router.post('/signup', signUp, responseSender);
 router.get('/token', refresh, responseSender);
 router.delete('/token', clearToken, responseSender);
 
+
 export default router;

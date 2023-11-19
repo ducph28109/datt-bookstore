@@ -154,7 +154,7 @@ const ShowProduct = () => {
         </div>
 
         <div className="grid grid-cols-4 gap-5 pt-10">
-          {data?.product?.map((item: any, index) => (
+          {data?.product?.map((item: any) => (
             <div className='border border-gray-300 p-5 rounded-md h-[383px]'>
               <div>
                 <Link className='flex justify-center' to={'/detail/' + item._id}>

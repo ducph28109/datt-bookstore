@@ -15,6 +15,13 @@ import CategoryAdmin from '../pages/AdminPages/Category/CategoryAdmin';
 import ProductAdmin from '../pages/AdminPages/Product/ProductAdmin';
 import UpdateProduct from '../pages/AdminPages/Product/UpdateProduct';
 import ProductDetailPage from '../pages/Userpage/ProductDetailPage/ProductDetailPage';
+import UserAdmin from '../pages/AdminPages/User/UserAdmin';
+import CartPage from '../pages/Userpage/CartPage/CartPage';
+import CheckOutPage from '../pages/Userpage/CheckOutPage/CheckOutPage';
+import OrderCompletePage from '../pages/Userpage/OrderCompletePage/OrderCompletePage';
+import OrderDetail from '../pages/Userpage/OderPage/OrderDetail';
+import OrderPage from '../pages/Userpage/OderPage/OrderPage';
+import OrdersAdmin from '../pages/AdminPages/Orders/OrdersAdmin';
 
 const router = createBrowserRouter([
    {
@@ -47,6 +54,27 @@ const router = createBrowserRouter([
             path: 'detail/:id',
             element: <ProductDetailPage/>,
             errorElement: <NotFoundPage />
+         },
+         {
+            path: '/cart',
+            element: <CartPage />,
+            errorElement: <NotFoundPage />
+         },
+         {
+            path: '/checkout',
+            element: <CheckOutPage />
+         },
+         {
+            path: '/ordercomplete',
+            element: <OrderCompletePage />
+         },
+         {
+            path: '/my-order/:id',
+            element: <OrderDetail />
+         },
+         {
+            path: '/order',
+            element: <OrderPage />
          },
         
       ]
@@ -94,6 +122,15 @@ const router = createBrowserRouter([
             path: 'updatecategory/:id',
             element: <UpdateCategory/>,
             errorElement: <NotFoundPage />
+         },
+         {
+            path: 'useradmin',
+            element: <UserAdmin/>,
+            errorElement: <NotFoundPage />
+         },
+         {
+            path: 'orderMyAdmin',
+            element: <OrdersAdmin />
          },
       ]
       }

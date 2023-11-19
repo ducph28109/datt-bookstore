@@ -37,8 +37,9 @@ const items: MenuItem[] = [
       getItem(<Link to='/admin/productadmin'>Sản phẩm</Link>, '3'),
       getItem(<Link to='/admin/categoryadmin'>Danh mục</Link>, '4'),
    ]),
-   getItem(<Link to='/manage/orders'>Đơn hàng</Link>, 'sub1', <OrderIcon />),
-   getItem(<Link to='/manage/accounts'>Tài khoản</Link>, 'sub3', <UserOutlined />),
+
+   getItem(<Link to='/admin/orderMyAdmin'>Đơn hàng</Link>, 'sub1', <OrderIcon />),
+   getItem(<Link to='/admin/useradmin'>Tài khoản</Link>, 'sub3', <UserOutlined />),
 ];
 
 const AdminLayout = () => {

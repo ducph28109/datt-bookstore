@@ -22,12 +22,11 @@ const userApi = createApi({
          },
          invalidatesTags: ['user']
       }),
-      getAll: builder.query<IResponseHasPaginate<IUser>, Partial<IQueryParam>>({
-         query: (params) => {
+      getAll: builder.query<{user:IUser[]},void>({
+         query: () => {
             return {
                url: '/users',
                method: 'GET',
-               params: paramTransformer(params),
                credentials: 'include'
             };
          },

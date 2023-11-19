@@ -5,6 +5,7 @@ import { Button, Col, Popover, Row } from 'antd';
 import { useDispatch, useSelector } from 'react-redux';
 import { IAuth, deleteTokenAndUser } from '../../../slices/authSlice'
 import { useClearTokenMutation } from '../../../services/auth.service';
+import { InboxOutlined } from '@ant-design/icons';
 
 const Header = () => {
    const auth = useSelector((state: { userReducer: IAuth }) => state.userReducer);
@@ -43,7 +44,7 @@ const Header = () => {
                            </span>
                         </Popover>
                      ) : (
-                        <>
+                        <div className='flex justify-between items-center gap-5 pb-3'>
                            <div className='w-[5%] h-full'></div>
                            <Popover
                               placement='bottom'
@@ -58,10 +59,13 @@ const Header = () => {
                            >
                               <img src={auth?.user?.avatar} className='w-8 rounded-full  aspect-square m-0  cursor-pointer' />
                            </Popover>
-                        </>
+                           <Link to={"/order"}  >
+                              <InboxOutlined className='text-2xl' />
+                           </Link>
+                        </div>
                      )}
                   </span>
-                  <CiHeart className='w-7 h-7  hidden opacity-0 invisible md:block md:opacity-100 md:visible' />
+
                </div>
             </div>
             <div className='text-center'>
@@ -71,12 +75,12 @@ const Header = () => {
             </div>
             <div className='flex justify-between items-center gap-5 '>
                <SearchFilter icon={<CiSearch className='w-7 h-7' />}></SearchFilter>
-               <Button
-                  className='pb-10 border-none hidden opacity-0 invisible md:block md:opacity-100 md:visible'
-                  icon={<CiShoppingCart className='w-7 h-7 ' />}
-               />
-
-
+               <Link to={'/cart'}>
+                  <Button
+                     className='pb-10 border-none hidden opacity-0 invisible md:block md:opacity-100 md:visible'
+                     icon={<CiShoppingCart className='w-7 h-7 ' />}
+                  />
+               </Link>
             </div>
          </div>
          <hr />
@@ -87,7 +91,7 @@ const Header = () => {
             <Col span={4} className='lg:text-lg md:text-base font-medium'>
                <Link to='/'>Trang chủ</Link>
             </Col>
-         
+
             <Col span={4} className='lg:text-lg md:text-base font-medium'>
                <Link to='/about'>Giới thiệu</Link>
             </Col>
@@ -95,7 +99,6 @@ const Header = () => {
                <Link to='/contact'>Liên hệ</Link>
             </Col>
          </Row>
-         {/* <MenuSideBar open={open} data={data} isLoading={isLoading} onClose={onClose} /> */}
       </div>
    );
 };

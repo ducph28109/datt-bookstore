@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const NotFoundPage = () => {
   return (
@@ -30,9 +31,9 @@ const NotFoundPage = () => {
         </div>
 
         <div className="mt-8">
-          <a href="/" className='p-2'>
+       <Link className='p-2' to={"/"}>
             <button className="rounded-full bg-[#6BAA14] px-2 text-white lg:text-lg text-sm  font-medium  h-10 mx-auto md:mx-0">Quay về trang chủ</button>
-          </a>
+            </Link>
         </div>
       </div>
     </div>
