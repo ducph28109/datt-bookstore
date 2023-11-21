@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { ICartSlice, removeAllProductFromCart } from '../../../slices/cartSlice';
+import { ICartSlice } from '../../../slices/cartSlice';
 import { removeFromCart, updateItem } from '../../../slices/cartSlice';
 import { message } from 'antd';
 
@@ -73,7 +73,7 @@ const CartPage = () => {
                                     <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
                                         <div className="mt-5 sm:mt-0">
                                             <h2 className="text-lg font-bold text-gray-900">{item.name}</h2>
-                                            {/* <p className="mt-1 text-xs text-gray-700">36EU - 4US</p> */}
+                                           
                                         </div>
                                         <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                                             <div className="flex items-center border-gray-100">
@@ -152,10 +152,7 @@ const CartPage = () => {
 
 
                         <div className="mt-6 h-full rounded-lg border bg-white p-6 shadow-md md:mt-0 md:w-1/3">
-                            {/* <div className="mb-2 flex justify-between">
-                                <p className="text-gray-700">Số tiền của đơn hàn</p>
-                                <p className="text-gray-700">$129.99</p>
-                            </div> */}
+                          
 
                             <hr className="my-4" />
                             <div className="flex justify-between">

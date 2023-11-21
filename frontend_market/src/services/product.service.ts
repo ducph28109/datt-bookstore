@@ -51,7 +51,14 @@ const productApi = createApi({
             method: 'GET'
          }),
          invalidatesTags: ['products']
-      })
+      }),
+      getRelatedProducts: builder.query({
+         query: ({ idCategory, idProduct }) => {
+            return {
+               url: '/products/related/' + idCategory + '/' + idProduct
+            };
+         }
+      }),
    })
 });
 
@@ -61,7 +68,8 @@ export const {
    useAddProductMutation,
    useUpdateProductMutation,
    useRemoveProductMutation,
-   useSearchProductMutation
+   useSearchProductMutation,
+   useGetRelatedProductsQuery
 } = productApi;
 
 export default productApi;

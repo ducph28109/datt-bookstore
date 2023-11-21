@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { IQueryParam, IResponse, IResponseHasPaginate } from '../interfaces/base';
+import { IResponse } from '../interfaces/base';
 import { IUser } from '../interfaces/auth';
-import { paramTransformer } from '../utils/transformParams';
 
 const userApi = createApi({
    reducerPath: 'userApi',

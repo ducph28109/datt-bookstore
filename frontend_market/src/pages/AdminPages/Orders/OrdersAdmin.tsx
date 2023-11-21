@@ -2,7 +2,6 @@ import { Layout, Modal, Space, Spin, Table, Tag, theme } from 'antd';
 import { useState } from 'react';
 import { IOrderFull } from '../../../interfaces/oder';
 import { CloseOutlined, SearchOutlined } from '@ant-design/icons';
-import { Helmet } from 'react-helmet';
 import { formatStringToDate, transformStatusOrder } from '../../../helper';
 import DetailOrder from './DetailOrder';
 const { Column } = Table;
@@ -19,9 +18,7 @@ const OrdersAdmin = () => {
    if (isLoading) return <Spin />;
    return (
       <>
-         <Helmet>
-            <title>Đơn hàng</title>
-         </Helmet>
+         
          <Layout style={{ minHeight: '100vh', display: 'flex', position: 'relative', width: '100%' }}>
             <div className='flex-1 flex justify-center items-center flex-col mt-10 w-[100%]'>
                <div className='flex justify-between items-center w-[90%]'>

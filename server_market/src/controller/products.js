@@ -1,6 +1,7 @@
 import Products from '../models/products';
 import Category from '../models/categories';
 import { productSchema } from '../schemas/product';
+import mongoose from 'mongoose';
 export const getAllProduct = async (req, res) => {
    const { _page = 1, _order = 'asc', _limit = 1000000, _sort = 'createdAt', _q = '' } = req.query;
    const options = {
@@ -17,12 +18,12 @@ export const getAllProduct = async (req, res) => {
          ? {
               $or: [
                  { name: { $regex: _q, $options: 'i' } },
-                 //   { price: { $regex: _q, $options: 'i' } },
+                 
                  { author: { $regex: _q, $options: 'i' } },
               ],
            }
          : {};
-   // const optionsSearch = _q !== '' ? { $text: { $search: _q } } : {};
+   
    try {
       const product = await Products.paginate({ ...optionsSearch }, { ...options });
       return res.status(201).json({
@@ -134,6 +135,38 @@ export const removeProduct = async (req, res) => {
       });
    } catch (error) {
       return res.status(400).json({
+         message: error.message,
+      });
+   }
+};
+export const getRelatedProducts = async (req, res) => {
+   try {
+      const { cate_id, product_id } = req.params;
+      const products = await Products.aggregate([
+         {
+            $match: {
+               categoryId: new mongoose.Types.ObjectId(cate_id),
+               _id: { $ne: new mongoose.Types.ObjectId(product_id) },
+            },
+         },
+         { $sample: { size: 10 } },
+      
+      ]);
+      if (!products) {
+         return res.status(404).json({
+            status: 404,
+            message: 'No Product found',
+         });
+      } else {
+         return res.status(200).json({
+            products,
+            status: 200,
+            message: 'Product found',
+         });
+      }
+   } catch (error) {
+      return res.status(500).json({
+         status: 500,
          message: error.message,
       });
    }

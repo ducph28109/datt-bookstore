@@ -5,7 +5,6 @@ import 'react-quill/dist/quill.snow.css';
 type Props = {
    getValue: (value: string) => void;
    defaultValue?: string;
-   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 };
 
 const formats = [

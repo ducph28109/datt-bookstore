@@ -18,7 +18,7 @@ const checkCancellationTime = (order) => {
     }
 };
 
-//Tạo mới đơn hàng
+
 export const CreateOrder = async (req, res) => {
     try {
         const { products, paymentMethod } = req.body;
@@ -86,7 +86,7 @@ export const CreateOrder = async (req, res) => {
 
             }
         }
-        // console.log(req.user);
+     
         const data = await Order.create(req.body);
         if (req.user != null) {
             await Order.findByIdAndUpdate(data._id, { userId: req.user._id });
@@ -109,7 +109,7 @@ export const CreateOrder = async (req, res) => {
         });
     }
 };
-//Admin lấy tất cả đơn hàng
+
 export const GetAllOrders = async (req, res) => {
     const {
         _page = 1,
@@ -155,7 +155,7 @@ export const GetAllOrders = async (req, res) => {
     }
 };
 
-//Khách hàng (đã đăng nhập) tra cứu đơn hàng
+
 export const OrdersForMember = async (req, res) => {
     try {
         const userId = req.user._id;
@@ -186,7 +186,7 @@ export const OrdersForMember = async (req, res) => {
 
 
 
-// Chi tiết đơn đặt hàng
+
 export const OrderDetail = async (req, res) => {
     try {
         const orderId = req.params.id;

@@ -1,6 +1,5 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { Button, Drawer, Space } from 'antd';
-import { useSearchProductMutation } from '../../../../services/product.service';
 import axios from 'axios';
 import { IProduct } from '../../../../interfaces/product';
 import { Link } from 'react-router-dom';

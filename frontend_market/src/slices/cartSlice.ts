@@ -18,14 +18,7 @@ const initialState: ICartSlice = {
    totalPrice: 0,
    cartName: 'cart'
 };
-export interface ICartItems {
-   _id: string;
-   name: string;
-   images: string;
-   price: number;
-   weight: number;
-   totalWeight: number;
-}
+
 const cartSlice = createSlice({
    name: 'cart',
    initialState,
@@ -44,20 +37,7 @@ const cartSlice = createSlice({
             0
          );
       },
-      updatePrice: (state, action) => {
-         const value = action.payload;
-
-         state.items.find((item: any) => {
-            if (item?._id === value._id) {
-               item.price = value.price;
-            }
-         });
-         localStorage.setItem(state.cartName, JSON.stringify(state.items));
-         state.totalPrice = state.items.reduce(
-            (accumulator: any, product: any) => accumulator + product.price * product.weight,
-            0
-         );
-      },
+ 
 
       addItem: (state, action) => {
          const value = action.payload;
@@ -136,6 +116,6 @@ const cartSlice = createSlice({
       }
    }
 });
-export const { addItem, removeFromCart, updateItem,updatePrice, removeAllProductFromCart, setItem, setCartName } =
+export const { addItem, removeFromCart, updateItem, removeAllProductFromCart, setItem, setCartName } =
    cartSlice.actions;
 export default cartSlice;

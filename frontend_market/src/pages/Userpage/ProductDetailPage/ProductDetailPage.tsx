@@ -1,17 +1,16 @@
 import { useDispatch } from 'react-redux';
-import { useGetProductByIdQuery } from '../../../services/product.service';
+import { useGetProductByIdQuery, useGetRelatedProductsQuery } from '../../../services/product.service';
 import { Link, useParams } from 'react-router-dom';
 import { addItem } from '../../../slices/cartSlice';
 import { message } from 'antd';
 import { useState } from 'react';
-import { useGetAllProductsQuery } from '../../../services/product.service';
 
 
 const ProductDetailPage = () => {
-  const { data: item } = useGetAllProductsQuery();
   const [inputQuantity, setinputQuantity] = useState<any>(1);
   const { id } = useParams();
   const { data, isLoading } = useGetProductByIdQuery(id);
+console.log(data);
 
   const handleinputQuantity = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (/^[\d.]+$/.test(e.target.value)) {
@@ -63,6 +62,16 @@ const ProductDetailPage = () => {
       setinputQuantity(inputQuantity - 1);
     }
   };
+  const objId = {
+    idCategory: data?.product?.categoryId?._id,
+    idProduct: id
+  };
+  console.log(objId);
+  
+  const { data: relatedProductsData } = useGetRelatedProductsQuery(objId!, {
+    skip: !objId.idCategory || !objId.idProduct
+  });
+console.log(relatedProductsData);
 
   return (
     <div>
@@ -178,7 +187,7 @@ const ProductDetailPage = () => {
                       <span>{data?.product.price}$</span>
                       <span
                         className="text-base font-normal text-gray-500 line-through dark:text-gray-400">{data?.product.discount}%</span>
-                    </p> 
+                    </p>
                     <p className="text-green-600 dark:text-green-300 "> Số lượng:{data?.product.maxQuantity}</p>
                   </div>
 
@@ -244,7 +253,8 @@ const ProductDetailPage = () => {
       </section>
       <div className='flex justify-center'>
         <div className="grid grid-cols-4 gap-5 pt-10 w-[85%]">
-          {item?.product?.map((item: any) => (
+        {relatedProductsData?.products?.map((item: any) => (
+
             <div className='border border-gray-300 p-5 rounded-md h-[383px]'>
               <div>
                 <Link className='flex justify-center' to={'/detail/' + item._id}>

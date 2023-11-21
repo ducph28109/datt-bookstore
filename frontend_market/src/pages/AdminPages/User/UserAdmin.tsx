@@ -19,7 +19,7 @@ const UserAdmin = () => {
                 <div className='flex-1 flex justify-center items-center flex-col mt-10 w-[100%]'>
                     <div className='flex justify-between items-center w-[90%]'>
                         <h1 className='text-3xl font-semibold text-[rgba(0,0,0,0.7)]'>Tài khoản</h1>
-                        <Link to='/admin/addcategory'>
+                        <Link to='/admin'>
                             <button className='bg-green-500 duration-100 hover:bg-greenPri600 text-white text-lg p-2 font-semibold rounded-lg flex justify-start items-center gap-2'>
                                 <PlusCircleOutlined style={{ color: 'white' }} />
                                 Tài khoản mới

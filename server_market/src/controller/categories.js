@@ -46,15 +46,15 @@ export const removeCategories = async (req, res) => {
    try {
       const category = await Category.findOne({ _id: req.params.id });
       const defaultCategoryId = '64ecbaba1afc7bd4ffeb8d9c';
-      // không cho phép xóa danh mục mặc định
+      
       if (req.params.id == defaultCategoryId) {
          return res.status(403).json({
             message: 'Can not delete Default category ',
          });
       }
-      // update lại id cate của các sản phẩm trong danh mục muốn xóa thành id cate defaultCategory
+     
       await Product.updateMany({ categoryId: category._id }, { $set: { categoryId: defaultCategoryId } });
-      // thêm id của sản phẩm vào danh mục mạc định
+
       const defaultCate = await Category.findByIdAndUpdate(
          defaultCategoryId,
          {

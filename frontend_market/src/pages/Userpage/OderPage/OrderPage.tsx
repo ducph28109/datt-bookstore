@@ -15,7 +15,7 @@ const OrderPage = () => {
 
    const [loading, setLoading] = useState<boolean>(false);
    const auth = useSelector((state: { userReducer: IAuth }) => state.userReducer);
-   // const orderDatas = orders && orderData(orders)
+  
    useEffect(() => {
       if (!auth.accessToken) return;
       (async () => {
